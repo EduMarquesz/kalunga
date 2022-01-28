@@ -1,10 +1,7 @@
-
 import pandas as pd
 import requests
 from scrapy.http import TextResponse
-l = list()
-lista = list()
-objects = dict()
+produtos = dict()
 #Pega dados da parte de gamer da Kalunga
 def gamer():
     
@@ -83,12 +80,11 @@ def gamertwo(departamento):
 
 
 if __name__ == '__main__':
-    SubCategorias = gamertwo(13)
-    SubCategoriasTwo = gamertwo(10)
-    SubCategoriasThree = gamertwo(20)
-    todos_produtos = SubCategorias + SubCategoriasTwo + SubCategoriasThree
-    informations = pd.DataFrame(todos_produtos)
-    
-print(informations)
-print('Tudo OK!!')
-1
+    main_categoria = gamer()
+    sub_categorias = gamertwo(13)
+    sub_categoriasTwo = gamertwo(10)
+    sub_categoriasThree = gamertwo(20)
+    todos_produtos = main_categoria + sub_categorias + sub_categoriasTwo + sub_categoriasThree
+    produtos['Produtos'] = todos_produtos
+    informations = pd.DataFrame(produtos)
+    print(informations)
